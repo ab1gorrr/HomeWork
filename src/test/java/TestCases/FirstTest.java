@@ -1,14 +1,9 @@
-package ru.deliveryClub;
+package TestCases;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,12 +14,6 @@ public class FirstTest extends WebDriverSettings {
         driver.get("https://www.delivery-club.ru/");
         String title= driver.getTitle();
         Assert.assertTrue(title.equals("Delivery Club — Доставка еды и продуктов"));
-    }
-
-    @Test
-    public void firstTest2() {
-        driver.get("https://www.delivery-club.ru/");
-
     }
 
     @Test
