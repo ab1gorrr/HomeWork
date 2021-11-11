@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-public class litecartLogin extends WebDriverSettings{
+public class LiteCartLogin extends WebDriverSettings{
 
     @Test
     public void testLogin(){
