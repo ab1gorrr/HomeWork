@@ -26,7 +26,6 @@ public class ProductStickerTest {
     @Test
     public void testStickers() {
         List<WebElement> element = driver.findElements(By.cssSelector("li.product"));
-        System.out.println(element);
         for (int i = 0; i < element.size(); i++) {
             Assert.assertFalse(element.get(i).findElement(By.cssSelector(".sticker")).getText().equals(null));
         }
