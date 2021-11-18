@@ -39,7 +39,6 @@ public class AdminMenuTest {
                     Assert.assertFalse(driver.findElement(By.xpath("//*[@id=\"content\"]/h1")).getText().equals(null));
                 }
             }
-            driver.navigate().back();
         }
     }
 
