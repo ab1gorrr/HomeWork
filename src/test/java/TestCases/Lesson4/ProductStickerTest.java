@@ -4,9 +4,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
@@ -27,7 +25,7 @@ public class ProductStickerTest {
     public void testStickers() {
         List<WebElement> element = driver.findElements(By.cssSelector("li.product"));
         for (int i = 0; i < element.size(); i++) {
-            Assert.assertFalse(element.get(i).findElement(By.cssSelector(".sticker")).getText().equals(null));
+            Assert.assertTrue(element.get(i).findElements(By.cssSelector(".sticker")).size()==1);
         }
     }
     @After
