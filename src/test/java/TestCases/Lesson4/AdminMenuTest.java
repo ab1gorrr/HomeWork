@@ -30,13 +30,13 @@ public class AdminMenuTest {
         for(int i=0;i<mainOption.size();i++){
             mainOption = driver.findElements(By.cssSelector("ul#box-apps-menu>li"));
             mainOption.get(i).click();
-            Assert.assertFalse(driver.findElement(By.xpath("//*[@id=\"content\"]/h1")).getText().equals(null));
+            Assert.assertTrue(driver.findElements(By.cssSelector("td#content h1")).size() == 1);
             sideOption = driver.findElements(By.cssSelector("ul.docs>li"));
-            if (sideOption !=null && sideOption.size() > 1){
+            if (sideOption.size() > 1){
                 for (int y=0;y<sideOption.size();y++){
                     sideOption = driver.findElements(By.cssSelector("ul.docs>li"));
                     sideOption.get(y).click();
-                    Assert.assertFalse(driver.findElement(By.xpath("//*[@id=\"content\"]/h1")).getText().equals(null));
+                    Assert.assertTrue(driver.findElements(By.cssSelector("td#content h1")).size() == 1);
                 }
             }
         }
