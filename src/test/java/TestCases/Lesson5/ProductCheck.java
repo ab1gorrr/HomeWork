@@ -40,10 +40,12 @@ public class ProductCheck {
                 double campaignPrice = Double.parseDouble(productList.get(i).findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-size").replaceAll("px",""));
                 Assert.assertTrue(regularPrice<campaignPrice);
                 Assert.assertEquals(productList.get(i).findElement(By.cssSelector("s.regular-price")).getCssValue("text-decoration-line"),"line-through");
+                Assert.assertEquals(productList.get(i).findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight"),"700");
                 for (int y=0;y<productList.size();y++){
                     driver.navigate().to(productLink[y]);
                     Assert.assertEquals(driver.findElement(By.cssSelector("s.regular-price")).getCssValue("text-decoration-line"),"line-through");
-                    Assert.assertEquals(productCostRegular[y].trim(),driver.findElement(By.cssSelector("s.regular-price")).getText().trim());
+                    Assert.assertEquals(driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight"),"700");
+                    Assert.assertEquals(productCostRegular[y],driver.findElement(By.cssSelector("s.regular-price")).getText().trim());
                     Assert.assertEquals(productName[y],driver.findElement(By.cssSelector("div#box-product h1")).getText());
                     Assert.assertEquals(productCostCampaign[y],driver.findElement(By.cssSelector("strong.campaign-price")).getText());
 
