@@ -27,16 +27,16 @@ public class CountrySort {
     @Test
     public void countyListAlphabet() {
         driver.navigate().to("http://localhost/litecart/admin/?app=countries&doc=countries");
-        List<WebElement> countriesNameList = driver.findElements(By.cssSelector("tr > td:nth-child(5) > a"));
-        Assert.assertTrue(checkSort(countriesNameList));
-        List<WebElement> zoneCountriesList = driver.findElements(By.xpath("//td[6][text()!='0']/../td[5]/a"));
-        for (int i=0;i<zoneCountriesList.size();i++){
-            zoneCountriesList = driver.findElements(By.xpath("//td[6][text()!='0']/../td[5]/a"));
-            zoneCountriesList.get(i).click();
-            countriesNameList = driver.findElements(By.cssSelector("table.dataTable tr > td:nth-child(3)"));
-            int indexOfLastElement = countriesNameList.size() -1;
-            countriesNameList.remove(indexOfLastElement);
-            Assert.assertTrue(checkSort(countriesNameList));
+        List<WebElement> nameRowList = driver.findElements(By.cssSelector("tr > td:nth-child(5) > a"));
+        Assert.assertTrue(checkSort(nameRowList));
+        List<WebElement> countriesWithGeoZone = driver.findElements(By.xpath("//td[6][text()!='0']/../td[5]/a"));
+        for (int i=0;i<countriesWithGeoZone.size();i++){
+            countriesWithGeoZone = driver.findElements(By.xpath("//td[6][text()!='0']/../td[5]/a"));
+            countriesWithGeoZone.get(i).click();
+            nameRowList = driver.findElements(By.cssSelector("table.dataTable tr > td:nth-child(3)"));
+            int indexOfLastElement = nameRowList.size() -1;
+            nameRowList.remove(indexOfLastElement);
+            Assert.assertTrue(checkSort(nameRowList));
             driver.navigate().back();
         }
 
@@ -45,19 +45,19 @@ public class CountrySort {
     @Test
     public void geoZoneCountry(){
         driver.get("http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones");
-        List<WebElement> countriesList = driver.findElements(By.cssSelector("tr.row > td:nth-child(3) > a"));
+        List<WebElement> countriesGeoZoneList = driver.findElements(By.cssSelector("tr.row > td:nth-child(3) > a"));
         List<WebElement> geoZoneName;
-        for (int i=0;i<countriesList.size();i++) {
-            countriesList = driver.findElements(By.cssSelector("tr.row > td:nth-child(3) > a"));
-            countriesList.get(i).click();
+        for (int i=0;i<countriesGeoZoneList.size();i++) {
+            countriesGeoZoneList = driver.findElements(By.cssSelector("tr.row > td:nth-child(3) > a"));
+            countriesGeoZoneList.get(i).click();
             geoZoneName = driver.findElements(By.cssSelector("table.dataTable td:nth-child(3)"));
             Assert.assertTrue(checkSort(geoZoneName));
             driver.navigate().back();
         }
     }
-    public boolean checkSort(List<WebElement> countriesNameList){
+    public boolean checkSort(List<WebElement> rowNameList){
         List<String> obtainedList = new ArrayList<>();
-        for (WebElement we:countriesNameList) {
+        for (WebElement we:rowNameList) {
             obtainedList.add(we.getText());
         }
         ArrayList<String> sortedList = new ArrayList<>(obtainedList);
