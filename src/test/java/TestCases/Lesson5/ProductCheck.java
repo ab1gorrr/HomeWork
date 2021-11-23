@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +18,19 @@ import java.util.regex.Pattern;
 
 public class ProductCheck {
     WebDriver driver;
+    public String locatorTextDecoration;
+
     @Before
     public void start() {
         driver = new ChromeDriver();
         driver.get("http://localhost/litecart/en/");
+        if(driver instanceof InternetExplorerDriver){
+            locatorTextDecoration = "text-decoration";
+        }else{
+            locatorTextDecoration = "text-decoration-line";
+        }
     }
+
     @Test
     public void productVerify() {
         List<WebElement> productList = driver.findElements(By.cssSelector("div#box-campaigns ul li.product"));
@@ -41,13 +51,13 @@ public class ProductCheck {
                 regularPrice = Double.parseDouble(productList.get(i).findElement(By.cssSelector("s.regular-price")).getCssValue("font-size").replaceAll("px",""));
                 campaignPrice = Double.parseDouble(productList.get(i).findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-size").replaceAll("px",""));
                 Assert.assertTrue(regularPrice<campaignPrice);
-                Assert.assertEquals(productList.get(i).findElement(By.cssSelector("s.regular-price")).getCssValue("text-decoration-line"),"line-through");
-                Assert.assertEquals(productList.get(i).findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight"),"700");
+                Assert.assertEquals(productList.get(i).findElement(By.cssSelector("s.regular-price")).getCssValue(locatorTextDecoration),"line-through");
+                Assert.assertTrue(Integer.parseInt(productList.get(i).findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight"))>=700);
             }
             for (int y=0;y<productList.size();y++){
                 driver.navigate().to(productLink[y]);
-                Assert.assertEquals(driver.findElement(By.cssSelector("s.regular-price")).getCssValue("text-decoration-line"),"line-through");
-                Assert.assertEquals(driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight"),"700");
+                Assert.assertEquals(driver.findElement(By.cssSelector("s.regular-price")).getCssValue(locatorTextDecoration),"line-through");
+                Assert.assertTrue(Integer.parseInt(driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight"))>=700);
                 Assert.assertEquals(productCostRegular[y],driver.findElement(By.cssSelector("s.regular-price")).getText().trim());
                 Assert.assertEquals(productName[y],driver.findElement(By.cssSelector("div#box-product h1")).getText());
                 Assert.assertEquals(productCostCampaign[y],driver.findElement(By.cssSelector("strong.campaign-price")).getText());
