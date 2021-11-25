@@ -48,7 +48,6 @@ public class AddNewProduct {
         driver.findElement(By.cssSelector("input[name='prices[EUR]']")).sendKeys("0,0000");
         driver.findElement(By.cssSelector("button[name=save]")).click();
         //Проверка наличия добавленного товара
-        driver.navigate().to("http://localhost/litecart/admin/?app=catalog&doc=catalog");
         Assert.assertEquals(1, driver.findElements(By.xpath("//a[text()='Pink Duck']")).size());
     }
 
