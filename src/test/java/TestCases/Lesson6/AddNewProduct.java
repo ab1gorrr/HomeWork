@@ -54,6 +54,6 @@ public class AddNewProduct {
 
     @After
     public void stop(){
-
+        driver.quit();
     }
 }
