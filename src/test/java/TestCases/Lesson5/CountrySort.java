@@ -1,21 +1,19 @@
 package TestCases.Lesson5;
 
-import com.beust.jcommander.converters.IntegerConverter;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class CountrySort {
     WebDriver driver;
+
     @Before
     public void start() {
         driver = new ChromeDriver();
@@ -24,6 +22,7 @@ public class CountrySort {
         driver.findElement(By.name("password")).sendKeys("admin");
         driver.findElement(By.name("login")).click();
     }
+
     @Test
     public void countyListAlphabet() {
         driver.navigate().to("http://localhost/litecart/admin/?app=countries&doc=countries");
@@ -50,11 +49,12 @@ public class CountrySort {
         for (int i=0;i<countriesGeoZoneList.size();i++) {
             countriesGeoZoneList = driver.findElements(By.cssSelector("tr.row > td:nth-child(3) > a"));
             countriesGeoZoneList.get(i).click();
-            geoZoneName = driver.findElements(By.cssSelector("table.dataTable td:nth-child(3)"));
+            geoZoneName = driver.findElements(By.cssSelector("#table-zones  td:nth-child(3)  option[selected=selected]"));
             Assert.assertTrue(checkSort(geoZoneName));
             driver.navigate().back();
         }
     }
+
     public boolean checkSort(List<WebElement> rowNameList){
         List<String> obtainedList = new ArrayList<>();
         for (WebElement we:rowNameList) {
@@ -64,6 +64,7 @@ public class CountrySort {
         Collections.sort(sortedList);
         return sortedList.equals(obtainedList);
     }
+
     @After
     public void stop() {
         driver.quit();
