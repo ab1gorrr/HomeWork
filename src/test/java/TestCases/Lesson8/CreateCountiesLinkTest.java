@@ -33,7 +33,7 @@ public class CreateCountiesLinkTest {
         for (WebElement webElement : linkList) {
             webElement.click();
             switchWindow(mainWindow);
-            Assert.assertTrue(titleMainWindow != driver.getTitle());
+            Assert.assertNotEquals(titleMainWindow, driver.getTitle());
             driver.close();
             driver.switchTo().window(mainWindow);
         }
