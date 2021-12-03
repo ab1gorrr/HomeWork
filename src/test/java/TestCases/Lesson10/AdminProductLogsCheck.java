@@ -37,9 +37,7 @@ public class AdminProductLogsCheck {
     }
 
     public void takeLogs(){
-        for (LogEntry l : driver.manage().logs().get("browser").getAll()) {
-            System.out.println(l);
-        }
+        Assert.assertTrue(driver.manage().logs().get("browser").getAll().isEmpty());
     }
 
     @After
