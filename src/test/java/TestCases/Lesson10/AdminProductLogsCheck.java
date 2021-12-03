@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.logging.LogEntry;
+
 import java.util.List;
 
 public class AdminProductLogsCheck {
@@ -35,7 +37,9 @@ public class AdminProductLogsCheck {
     }
 
     public void takeLogs(){
-        Assert.assertTrue(driver.manage().logs().get("browser").getAll().isEmpty());
+        for (LogEntry l : driver.manage().logs().get("browser").getAll()) {
+            System.out.println(l);
+        }
     }
 
     @After
