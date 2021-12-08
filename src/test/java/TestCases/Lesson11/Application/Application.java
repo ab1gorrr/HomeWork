@@ -41,9 +41,10 @@ public class Application {
         }
     }
 
-    public void removeProductInCart(){
+    public void removeAllProductInCart(){
         cartPage.open();
-        for (int i=0;i<cartPage.productFromCart.size();i++){
+        int cartSize = cartPage.productFromCart.size();
+        for (int i=0;i<cartSize;i++){
             cartPage.removeButton.click();
             cartPage.waitRemoved(cartPage.productFromCart);
         }
