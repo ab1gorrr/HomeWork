@@ -1,5 +1,6 @@
-package TestCases.Lesson11.Page;
+package testCases.lesson11.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,9 +24,13 @@ public class CartPage extends Page {
         wait.until(ExpectedConditions.stalenessOf(countProductFromCart.get(0)));
     }
 
-    @FindBy(css = "table.dataTable td.item")
-    public List<WebElement> productFromCart;
+    public List<WebElement> countProductFromCart() {
+        return driver.findElements(By.cssSelector("table.dataTable td.item"));
+    }
 
+    public int cartSize() {
+        return driver.findElements(By.cssSelector("table.dataTable td.item")).size();
+    }
 
     @FindBy(css = "button[name=remove_cart_item]")
     public WebElement removeButton;

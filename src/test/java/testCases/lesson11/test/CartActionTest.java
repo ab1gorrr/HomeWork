@@ -1,6 +1,5 @@
-package TestCases.Lesson11.Test;
-import TestCases.Lesson11.Application.Application;
-import org.junit.Before;
+package testCases.lesson11.test;
+import testCases.lesson11.application.Application;
 import org.junit.Test;
 
 public class CartActionTest{

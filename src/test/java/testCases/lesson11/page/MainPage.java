@@ -1,4 +1,4 @@
-package TestCases.Lesson11.Page;
+package testCases.lesson11.page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

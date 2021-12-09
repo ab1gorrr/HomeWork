@@ -1,20 +1,24 @@
-package TestCases.Lesson11.Application;
+package testCases.lesson11.application;
 
-import TestCases.Lesson11.Page.CartPage;
-import TestCases.Lesson11.Page.MainPage;
-import TestCases.Lesson11.Page.ProductPage;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import testCases.lesson11.page.CartPage;
+import testCases.lesson11.page.MainPage;
+import testCases.lesson11.page.ProductPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 public class Application {
     private WebDriver driver;
-
+    private List<WebElement> productFromCart;
     private CartPage cartPage;
     private MainPage mainPage;
     private ProductPage productPage;
 
     public Application(){
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         cartPage = new CartPage(driver);
         mainPage = new MainPage(driver);
         productPage = new ProductPage(driver);
@@ -43,10 +47,11 @@ public class Application {
 
     public void removeAllProductInCart(){
         cartPage.open();
-        int cartSize = cartPage.productFromCart.size();
-        for (int i=0;i<cartSize;i++){
+        int productCountInCart = cartPage.cartSize();
+        for (int i=0;i<productCountInCart;i++){
+            productFromCart = cartPage.countProductFromCart();
             cartPage.removeButton.click();
-            cartPage.waitRemoved(cartPage.productFromCart);
+            cartPage.waitRemoved(productFromCart);
         }
     }
 }
