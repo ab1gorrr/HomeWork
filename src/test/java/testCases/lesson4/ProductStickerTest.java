@@ -1,4 +1,4 @@
-package TestCases.Lesson4;
+package testCases.lesson4;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -24,8 +24,8 @@ public class ProductStickerTest {
     @Test
     public void testStickers() {
         List<WebElement> element = driver.findElements(By.cssSelector("li.product"));
-        for (int i = 0; i < element.size(); i++) {
-            Assert.assertTrue(element.get(i).findElements(By.cssSelector(".sticker")).size()==1);
+        for (WebElement webElement : element) {
+            Assert.assertEquals(1, webElement.findElements(By.cssSelector(".sticker")).size());
         }
     }
     @After

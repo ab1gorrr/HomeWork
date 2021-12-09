@@ -1,4 +1,4 @@
-package TestCases.Lesson6;
+package testCases.lesson6;
 
 import com.github.javafaker.Faker;
 import org.junit.After;

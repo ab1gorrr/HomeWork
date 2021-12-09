@@ -1,4 +1,4 @@
-package TestCases.Lesson5;
+package testCases.lesson5;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.util.ArrayList;

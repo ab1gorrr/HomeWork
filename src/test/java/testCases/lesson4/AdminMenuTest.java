@@ -1,4 +1,4 @@
-package TestCases.Lesson4;
+package testCases.lesson4;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -30,13 +30,13 @@ public class AdminMenuTest {
         for(int i=0;i<mainOption.size();i++){
             mainOption = driver.findElements(By.cssSelector("ul#box-apps-menu>li"));
             mainOption.get(i).click();
-            Assert.assertTrue(driver.findElements(By.cssSelector("td#content h1")).size() == 1);
+            Assert.assertEquals(1, driver.findElements(By.cssSelector("td#content h1")).size());
             sideOption = driver.findElements(By.cssSelector("ul.docs>li"));
             if (sideOption.size() > 1){
                 for (int y=0;y<sideOption.size();y++){
                     sideOption = driver.findElements(By.cssSelector("ul.docs>li"));
                     sideOption.get(y).click();
-                    Assert.assertTrue(driver.findElements(By.cssSelector("td#content h1")).size() == 1);
+                    Assert.assertFalse(driver.findElements(By.cssSelector("td#content h1")).size() != 1);
                 }
             }
         }

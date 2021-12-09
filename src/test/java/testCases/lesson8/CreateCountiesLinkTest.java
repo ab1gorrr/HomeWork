@@ -1,4 +1,4 @@
-package TestCases.Lesson8;
+package testCases.lesson8;
 
 import org.junit.After;
 import org.junit.Assert;

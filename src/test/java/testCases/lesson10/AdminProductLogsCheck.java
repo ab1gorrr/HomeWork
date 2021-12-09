@@ -1,4 +1,4 @@
-package TestCases.Lesson10;
+package testCases.lesson10;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -8,15 +8,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
 
 import java.util.List;
+import java.util.logging.Level;
 
 public class AdminProductLogsCheck {
     WebDriver driver;
 
     @Before
     public void start() {
+
         driver = new ChromeDriver();
         driver.get("http://localhost/litecart/admin/");
         driver.findElement(By.name("username")).sendKeys("admin");
