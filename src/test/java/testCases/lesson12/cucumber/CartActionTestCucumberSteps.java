@@ -6,8 +6,6 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 import testCases.lesson12.application.Application;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(plugin = "pretty",features = "src\\test\\resources\\cucumber.lesson12.cartAction")
 public class CartActionTestCucumberSteps implements En {
     private Application app = new Application();
     public CartActionTestCucumberSteps() {
