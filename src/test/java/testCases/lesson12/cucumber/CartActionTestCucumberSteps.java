@@ -1,9 +1,6 @@
 package testCases.lesson12.cucumber;
 
 import io.cucumber.java8.En;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import org.junit.runner.RunWith;
 import testCases.lesson12.application.Application;
 
 public class CartActionTestCucumberSteps implements En {
