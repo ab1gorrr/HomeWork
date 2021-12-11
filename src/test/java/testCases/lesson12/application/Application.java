@@ -51,9 +51,15 @@ public class Application {
             pageBack();
         }
     }
+
     public int parseToInt(String stringValue) {
         return Integer.parseInt(stringValue);
     }
+
+    public int countProductInCart() {
+        return cartPage.cartSize();
+    }
+
     public void removeAllProductInCart(){
         cartPage.open();
         int productCountInCart = cartPage.cartSize();

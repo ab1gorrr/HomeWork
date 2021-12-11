@@ -10,20 +10,15 @@ public class CartActionTestCucumberSteps implements En {
     private Application app = new Application();
     String productIntoCart;
     public CartActionTestCucumberSteps() {
+        After( ()-> app.quit());
         Given("^the cart is empty$", () -> {
             app.openManePageShop();
             productIntoCart = app.getCartStatus().getText();
-            Assert.assertEquals(Integer.parseInt(productIntoCart),0);
+            Assert.assertEquals(app.parseToInt(productIntoCart),0);
         });
         When("^I add three product into cart$", () -> app.addProductInCart());
         Then("^the cart contains three product$", () -> Assert.assertEquals(app.parseToInt(app.getCartStatus().getText()),3));
-        When("^I remove everything from the cart$", () -> {
-            app.removeAllProductInCart();
-            app.openManePageShop();
-            Assert.assertEquals(app.parseToInt(app.getCartStatus().getText()), 0);
-            app.quit();
-        });
-
-
+        When("^I remove everything from the cart$", () -> app.removeAllProductInCart());
     }
 }
+
