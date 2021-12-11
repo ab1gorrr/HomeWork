@@ -36,6 +36,10 @@ public class Application {
         mainPage.open();
     }
 
+    public WebElement getCartStatus() {
+        return mainPage.cartStatus;
+    }
+
     public void addProductInCart(){
         for (int i=0;i<3;i++) {
             mainPage.firstProduct.click();
@@ -47,10 +51,11 @@ public class Application {
             pageBack();
         }
     }
-    public void openCartPage(){
-        cartPage.open();
+    public int parseToInt(String stringValue) {
+        return Integer.parseInt(stringValue);
     }
     public void removeAllProductInCart(){
+        cartPage.open();
         int productCountInCart = cartPage.cartSize();
         for (int i=0;i<productCountInCart;i++){
             productFromCart = cartPage.countProductFromCart();

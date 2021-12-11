@@ -1,5 +1,6 @@
 package testCases.lesson12.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,5 +20,7 @@ public class MainPage extends Page {
     @FindBy(css = "li.product")
     public WebElement firstProduct;
 
+    @FindBy(css = "div#cart .quantity")
+    public WebElement cartStatus;
 
 }
